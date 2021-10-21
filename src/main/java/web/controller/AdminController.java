@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.*;
 import web.model.User;
 import web.service.UserService;
 
-@Controller("/admin")
+@Controller
 public class AdminController {
 
 	@Autowired
 	UserService userService;
 
-	@GetMapping(value = "/")
+	@GetMapping(value = "/admin")
 	public String getUsers(ModelMap model) {
 		model.addAttribute("users", userService.getAllUsers());
 		return "admin";
@@ -27,10 +27,10 @@ public class AdminController {
 		return "changeUserData";
 	}
 
-	@PostMapping(name = "/")
+	@PostMapping(name = "/admin")
 	public String updateUserData(@ModelAttribute User user) {
 		userService.updateUser(user);
-		return "redirect:/admin";
+		return "redirect:/";
 	}
 
 	@PostMapping(value = "/delete")

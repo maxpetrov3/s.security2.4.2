@@ -24,7 +24,7 @@
             </connector>
           </connectors>
           <webAppSourceDirectory>${project.build.directory}/${pom.artifactId}-${pom.version}</webAppSourceDirectory>
-          <contextPath>/login</contextPath>
+          <contextPath>/</contextPath>
         </configuration>
       </plugin>
         <plugin>

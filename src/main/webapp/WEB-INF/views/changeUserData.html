@@ -5,7 +5,7 @@
     <title>Change user data</title>
 </head>
 <body>
-<form action="#" th:action="@{/admin/}" th:object="${tuser}" method="post">
+<form action="#" th:action="@{/admin}" th:object="${tuser}" method="post">
     <input type="hidden" th:field = "*{id}"/>
     <p>Name: <input type="text" th:field = "*{name}"/></p>
     <p>Lastname: <input type="text" th:field="*{lastName}"/></p>
