@@ -21,9 +21,9 @@
             <td><span th:text="${user.getName()}"> Title </span></td>
             <td><span th:text="${user.getLastName()}"> Title </span></td>
             <td><span th:text="${user.getAge()}"> Title </span></td>
-            <td><a th:href="@{/user(userId=${user.getId()})}">Edit</a></td>
+            <td><a th:href="@{/changeUserData(userId=${user.getId()})}">Edit</a></td>
             <td>
-                <form method="Post" th:action="@{/delete}">
+                <form method="Post" th:action="@{/admin/delete}">
                     <input type = "hidden" th:name = "delId" th:value="${user.getId()}">
                     <button type="submit" name="submit">Delete</button>
                 </form>
@@ -31,7 +31,7 @@
         </tr>
     </table>
 
-    <a th:href="@{/user(userId=0)}">New User</a>
+    <a th:href="@{/changeUserData(userId=0)}">New User</a>
 
 </div>
 </body>

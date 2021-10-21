@@ -1,5 +1,6 @@
 package web.dao;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 import web.model.User;
 
@@ -19,6 +20,17 @@ public class UserDao {
     public void saveUser(User user) {
         entityManager.persist(user);
         entityManager.flush();
+    }
+
+    @Transactional
+    public UserDetails getUserByName(String username) {
+        Query query = entityManager.createQuery("select s from User s where s.username = :username", User.class);
+        query.setParameter("username", username);
+        if(query.getResultList().isEmpty()) {
+            return null;
+        } else {
+            return (User) query.getSingleResult();
+        }
     }
 
     @Transactional

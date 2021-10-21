@@ -17,7 +17,7 @@ public class RootConfig extends AbstractAnnotationConfigDispatcherServletInitial
 
     protected String[] getServletMappings() {
         return new String[]{
-                "/"
+                "/login"
         };
     }
 }
