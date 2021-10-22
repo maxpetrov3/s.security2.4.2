@@ -5,13 +5,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import web.model.User;
+import web.service.RoleService;
 import web.service.UserService;
+
 
 @Controller
 public class AdminController {
 
 	@Autowired
-	UserService userService;
+	private UserService userService;
+
+	@Autowired
+	private RoleService roleService;
 
 	@GetMapping(value = "/admin")
 	public String getUsers(ModelMap model) {
@@ -24,13 +29,15 @@ public class AdminController {
 		if(userId != null) {
 			model.addAttribute("tuser", userService.getUserById(userId));
 		}
+		model.addAttribute("roles", roleService.getAllRoles());
+		model.addAttribute("trole", roleService.getAllRoles());
 		return "changeUserData";
 	}
 
-	@PostMapping(name = "/admin")
+	@PostMapping(value = "/admin")
 	public String updateUserData(@ModelAttribute User user) {
 		userService.updateUser(user);
-		return "redirect:/";
+		return "redirect:/admin";
 	}
 
 	@PostMapping(value = "/delete")

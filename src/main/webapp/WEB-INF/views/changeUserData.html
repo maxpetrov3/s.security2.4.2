@@ -6,10 +6,21 @@
 </head>
 <body>
 <form action="#" th:action="@{/admin}" th:object="${tuser}" method="post">
-    <input type="hidden" th:field = "*{id}"/>
-    <p>Name: <input type="text" th:field = "*{name}"/></p>
+    <input type="hidden" th:field="*{id}"/>
+    <input type="hidden" th:field="*{password}"/>
+    <input type="hidden" th:field="*{authorities}"/>
+    <p>Name: <input type="text" th:field="*{name}"/></p>
     <p>Lastname: <input type="text" th:field="*{lastName}"/></p>
     <p>Age: <input type="text" th:field="*{age}"/></p>
+    <p>Username: <input type="text" th:field="*{username}"/></p>
+    <p>Roles:
+    <p th:each="role : *{authorities}">
+        <span th:text="${role.getAuthority()}"></span>
+    </p>
+    </p>
+    <select th:field="${trole}">
+        <option th:each="role : ${roles}" th:value="${role}" th:text="${role.getRole()}"></option>
+    </select>
     <p><input type="submit" value="Save"/></p>
 </form>
 </body>
