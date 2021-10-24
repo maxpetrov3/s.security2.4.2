@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class UserController {
 
-
-
     @GetMapping(value = "/user")
     private String getUserInfo(HttpServletRequest request, ModelMap model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

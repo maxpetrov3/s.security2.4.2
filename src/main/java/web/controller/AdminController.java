@@ -15,29 +15,10 @@ public class AdminController {
 	@Autowired
 	private UserService userService;
 
-	@Autowired
-	private RoleService roleService;
-
 	@GetMapping(value = "/admin")
 	public String getUsers(ModelMap model) {
 		model.addAttribute("users", userService.getAllUsers());
 		return "admin";
-	}
-
-	@GetMapping(value = "/changeUserData")
-	public String getUserData(@RequestParam(name = "userId", required = false) Long userId, ModelMap model) {
-		if(userId != null) {
-			model.addAttribute("tuser", userService.getUserById(userId));
-		}
-		model.addAttribute("roles", roleService.getAllRoles());
-		model.addAttribute("trole", roleService.getAllRoles());
-		return "changeUserData";
-	}
-
-	@PostMapping(value = "/admin")
-	public String updateUserData(@ModelAttribute User user) {
-		userService.updateUser(user);
-		return "redirect:/admin";
 	}
 
 	@PostMapping(value = "/delete")

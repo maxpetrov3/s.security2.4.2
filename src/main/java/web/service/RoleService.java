@@ -14,7 +14,10 @@ public class RoleService {
     private RoleDao roleDao;
 
     public List<Role> getAllRoles() {
-
         return roleDao.getAllRoles();
+    }
+
+    public Role getRoleById(Long id) {
+        return roleDao.getRoleById(id);
     }
 }

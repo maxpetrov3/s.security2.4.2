@@ -29,7 +29,7 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -39,7 +39,8 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String name, String lastName, int age, String username, String password, List<Role> authorities) {
+    public User(long id, String name, String lastName, int age, String username, String password, List<Role> authorities) {
+        this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.age = age;
@@ -49,7 +50,7 @@ public class User implements UserDetails {
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public List<Role> getAuthorities() {
         return authorities;
     }
 

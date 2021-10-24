@@ -25,6 +25,14 @@ public class RoleDao {
     public List<Role> getAllRoles() {
         Query query = entityManager.createQuery("select r from Role r", Role.class);
 
-        return query.getResultList();
+        return (List<Role>) query.getResultList();
+    }
+
+    @Transactional
+    public Role getRoleById(Long id) {
+        Query query = entityManager.createQuery("select s from Role s where s.id = :id");
+        query.setParameter("id", id);
+
+        return (Role) query.getSingleResult();
     }
 }
