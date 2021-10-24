@@ -9,5 +9,8 @@
 <label>Lastname: </label><p th:text = "${user.lastName}"></p><br>
 <label>Age: </label><p th:text = "${user.age}"></p><br>
 <label>Username: </label><p th:text = "${user.username}"></p><br>
+<form th:action="@{/logout}" method="POST">
+    <input type="submit" value="Logout"/>
+</form>
 </body>
 </html>

@@ -39,7 +39,9 @@
     </table>
 
     <a th:href="@{/changeUserData(userId=0)}">New User</a>
-
+    <form th:action="@{/logout}" method="POST">
+        <input type="submit" value="Logout"/>
+    </form>
 </div>
 </body>
 </html>
